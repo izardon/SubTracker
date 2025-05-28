@@ -1,0 +1,57 @@
+<div class="calendar-container">
+  <h2>{{ currentMonth | date:"MMMM yyyy" }}</h2>
+
+  <div class="navigation-buttons">
+    <button (click)="previousMonth()">Previous</button>
+    <button (click)="nextMonth()">Next</button>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="day-header">Sun</div>
+    <div class="day-header">Mon</div>
+    <div class="day-header">Tue</div>
+    <div class="day-header">Wed</div>
+    <div class="day-header">Thu</div>
+    <div class="day-header">Fri</div>
+    <div class="day-header">Sat</div>
+
+    <div *ngFor="let day of daysInMonthGrid" 
+         class="day-cell" 
+         [class.current-month]="day.isCurrentMonth"
+         [class.other-month]="!day.isCurrentMonth"
+         [class.selected]="selectedDate && day.dateObj.toDateString() === selectedDate.toDateString()"
+         (click)="onDateClick(day)">
+      <span>{{ day.dateNumber }}</span>
+      <div *ngIf="day.hasSubscriptions && day.isCurrentMonth" class="subscription-indicator-dot"></div>
+      <!-- More detailed subscription indicators can be added here if needed -->
+      <!-- Example: <div *ngFor="let sub of getSubscriptionsForCell(day.dateObj)" class="subscription-indicator">{{ sub.name }}</div> -->
+    </div>
+  </div>
+
+  <div *ngIf="selectedDate" class="details-section">
+    <h3>Subscriptions for {{ selectedDate | date:"mediumDate" }}</h3>
+    
+    <div *ngIf="!showSubscriptionForm && subscriptionsForSelectedDate.length > 0">
+      <ul>
+        <li *ngFor="let sub of subscriptionsForSelectedDate">
+          {{ sub.name }} - {{ sub.price | currency }} ({{ sub.cycle }})
+          <button (click)="showEditForm(sub)">Edit</button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="!showSubscriptionForm && subscriptionsForSelectedDate.length === 0">
+      <p>No subscriptions for this date.</p>
+    </div>
+
+    <button *ngIf="!showSubscriptionForm" (click)="showAddForm()">Add Subscription</button>
+
+    <app-subscription-form *ngIf="showSubscriptionForm"
+      [subscription]="editingSubscription"
+      [selectedDate]="selectedDate"
+      (save)="handleSaveSubscription($event)"
+      (cancel)="handleCancelSubscriptionForm()"
+      (delete)="handleDeleteSubscription($event)">
+    </app-subscription-form>
+  </div>
+</div>
+

@@ -1,0 +1,51 @@
+body { 
+  font-family: 'Arial', sans-serif; 
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+button {
+  font-family: 'Arial', sans-serif;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+input[type='text'], input[type='number'], select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Important for consistent sizing */
+  width: 100%; /* Default to full width within their container */
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Basic responsive container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+

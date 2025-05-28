@@ -1,0 +1,59 @@
+.subscription-form-container {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  margin-top: 15px;
+}
+
+.subscription-form-container div {
+  margin-bottom: 15px; /* Space between form fields */
+}
+
+.subscription-form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Inputs and select already have global styling for width 100% */
+/* We can add more specific styling if needed */
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+}
+
+.form-buttons button {
+  /* Specific styling can go here if default button styling isn't enough */
+}
+
+.form-buttons button[type='submit'] { /* Save button */
+  background-color: #2ecc71; /* Green */
+  color: white;
+}
+.form-buttons button[type='submit']:hover {
+  background-color: #27ae60;
+}
+
+.form-buttons button[type='button'].cancel-btn { /* Cancel button */
+  background-color: #95a5a6; /* Grey */
+  color: white;
+}
+.form-buttons button[type='button'].cancel-btn:hover {
+  background-color: #7f8c8d;
+}
+
+.form-buttons button[type='button'].delete-btn { /* Delete button */
+  background-color: #e74c3c; /* Red */
+  color: white;
+  margin-right: auto; /* Push delete button to the left, if needed, or handle with flex order */
+}
+.form-buttons button[type='button'].delete-btn:hover {
+  background-color: #c0392b;
+}
+
+
