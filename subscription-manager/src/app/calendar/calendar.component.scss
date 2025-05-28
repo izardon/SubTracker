@@ -82,16 +82,38 @@
   color: #e0e0e0; /* Slightly different if selected but other month */
 }
 
+/* Styles for subscription display within calendar cells */
+.subscriptions-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start of the cell */
+  gap: 2px; /* Space between subscription items */
+  margin-top: 5px; /* Space below the date number */
+  padding-left: 2px; /* Small padding to not stick to the very edge */
+}
 
-.subscription-indicator-dot {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
+.subscription-item {
+  display: flex;
+  align-items: center; /* Vertically align square and text */
+  font-size: 0.75em; /* Smaller font for subscription name */
+  line-height: 1.2;
+  color: #333; /* Darker text for better readability */
+  /* Example: if you want to limit width and add ellipsis for long names */
+  /* max-width: 100%; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+}
+
+.subscription-color-square {
   width: 8px;
   height: 8px;
-  background-color: #e74c3c; /* Red dot */
-  border-radius: 50%;
+  background-color: #3498db; /* Default color (e.g., blue) */
+  border-radius: 2px; /* Slightly rounded corners */
+  margin-right: 4px; /* Space between square and name */
+  flex-shrink: 0; /* Prevent square from shrinking if item text is long */
 }
+/* End of subscription display styles */
 
 .details-section {
   margin-top: 25px;

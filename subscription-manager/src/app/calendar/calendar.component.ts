@@ -8,7 +8,7 @@ interface CalendarDay {
   dateObj: Date;
   dateNumber: number;
   isCurrentMonth: boolean;
-  hasSubscriptions: boolean;
+  subscriptions: Subscription[];
 }
 
 @Component({
@@ -51,7 +51,7 @@ export class CalendarComponent implements OnInit {
         dateObj: prevMonthDay,
         dateNumber: prevMonthDay.getDate(),
         isCurrentMonth: false,
-        hasSubscriptions: this.subscriptionService.getSubscriptionsByDate(prevMonthDay).length > 0
+        subscriptions: this.subscriptionService.getSubscriptionsByDate(prevMonthDay)
       });
     }
     
@@ -62,7 +62,7 @@ export class CalendarComponent implements OnInit {
         dateObj: dayDate,
         dateNumber: i,
         isCurrentMonth: true,
-        hasSubscriptions: this.subscriptionService.getSubscriptionsByDate(dayDate).length > 0
+        subscriptions: this.subscriptionService.getSubscriptionsByDate(dayDate)
       });
     }
 
@@ -76,7 +76,7 @@ export class CalendarComponent implements OnInit {
             dateObj: nextMonthDay,
             dateNumber: nextMonthDay.getDate(),
             isCurrentMonth: false,
-            hasSubscriptions: this.subscriptionService.getSubscriptionsByDate(nextMonthDay).length > 0
+            subscriptions: this.subscriptionService.getSubscriptionsByDate(nextMonthDay)
             });
         }
     }
@@ -88,7 +88,7 @@ export class CalendarComponent implements OnInit {
             dateObj: nextDay,
             dateNumber: nextDay.getDate(),
             isCurrentMonth: false, // Assuming these are padding days from next month
-            hasSubscriptions: this.subscriptionService.getSubscriptionsByDate(nextDay).length > 0
+            subscriptions: this.subscriptionService.getSubscriptionsByDate(nextDay)
          });
      }
 

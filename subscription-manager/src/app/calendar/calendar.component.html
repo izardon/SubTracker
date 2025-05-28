@@ -22,7 +22,12 @@
          [class.selected]="selectedDate && day.dateObj.toDateString() === selectedDate.toDateString()"
          (click)="onDateClick(day)">
       <span>{{ day.dateNumber }}</span>
-      <div *ngIf="day.hasSubscriptions && day.isCurrentMonth" class="subscription-indicator-dot"></div>
+      <div *ngIf="day.subscriptions && day.subscriptions.length > 0 && day.isCurrentMonth" class="subscriptions-list">
+        <div *ngFor="let sub of day.subscriptions" class="subscription-item">
+          <div class="subscription-color-square"></div> <!-- Placeholder for colored square -->
+          <span class="subscription-name">{{ sub.name }}</span>
+        </div>
+      </div>
       <!-- More detailed subscription indicators can be added here if needed -->
       <!-- Example: <div *ngFor="let sub of getSubscriptionsForCell(day.dateObj)" class="subscription-indicator">{{ sub.name }}</div> -->
     </div>
